@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_mobile/DIO/lib_http.dart';
 import 'package:tp1_mobile/DIO/transfer.dart';
+import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 import 'package:tp1_mobile/Pages/ecran_inscription.dart';
 // import 'org.kickmyb.transfer.SigninRequest';
 // import 'org.kickmyb.transfer.SigninResponse'';
@@ -28,8 +29,13 @@ class _ConnexionPage extends State<ConnexionPage> {
     SignupRequest signup = SignupRequest(username.text, password.text);
 
     try{
-      final response = await SingletonDio.getDio().post('http://localhost8080/api/id/signin', data: signup.toJson());
-      SigninResponse signinResponse = SigninResponse(response.data);
+      final response = await dio.post('http://10.0.2.2:8080/api/id/signin', data: signup.toJson());
+      //SigninResponse signinResponse = SigninResponse(response.data);
+      Navigator.push(context,
+        MaterialPageRoute(
+          builder: (context) => const EcranAccueil(),
+        ),
+      );
 
       print(response);
 
@@ -39,25 +45,13 @@ class _ConnexionPage extends State<ConnexionPage> {
         content: Text(e.response?.data),
       );
 
-      // Find the ScaffoldMessenger in the widget tree
-      // and use it to show a SnackBar.
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
-      //
-      // String errorMessage = "An error occurred";
-      //
-      // if (e.response != null && e.response!.data != null) {
-      //   errorMessage = e.response!.data.toString();
-      // }
-      //
-      // final snackBar = SnackBar(
-      //   content: Text(errorMessage),
-      // );
-      //
-      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
 
   }
+
+
 
 
   void getHttp() async {

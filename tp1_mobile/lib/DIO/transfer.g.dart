@@ -17,9 +17,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
     };
 
 SigninResponse _$SigninResponseFromJson(Map<String, dynamic> json) =>
-    SigninResponse(
-      json['username'] as String,
-    );
+    SigninResponse()..username = json['username'] as String;
 
 Map<String, dynamic> _$SigninResponseToJson(SigninResponse instance) =>
     <String, dynamic>{

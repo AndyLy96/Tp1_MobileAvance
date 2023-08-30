@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tp1_mobile/DIO/transfer.dart';
+import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 
 class EcranInscription extends StatefulWidget {
   const EcranInscription({super.key});
@@ -10,13 +13,43 @@ class EcranInscription extends StatefulWidget {
 }
 
 class _EcranInscription extends State<EcranInscription> {
-  final _formKey = GlobalKey<FormState>();
 
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  void _login() {
+
+
+  final dio = Dio();
+  late String psw;
+
+  void _signup() async {
+
+
+    if(password.text == confirmPassword.text)
+    {
+        this.psw = password.text;
+    }
+
+    SignupRequest signup = SignupRequest(username.text, psw);
+
+    try{
+      final response = await dio.post('http://10.0.2.2:8080/api/id/signup', data: signup.toJson());
+      //SigninResponse signinResponse = SigninResponse(response.data);
+      print(response);
+      Navigator.push(context,
+        MaterialPageRoute(
+          builder: (context) => const EcranAccueil(),
+        ),
+      );
+    }on DioError catch (e){
+      final snackBar = SnackBar(
+        content: Text(e.response?.data),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+    }
 
   }
 
@@ -70,7 +103,7 @@ class _EcranInscription extends State<EcranInscription> {
                 children: [
 
                   MaterialButton(
-                    onPressed: _login,
+                    onPressed: _signup,
                     // ()
                     // {
                     //   Navigator.push(

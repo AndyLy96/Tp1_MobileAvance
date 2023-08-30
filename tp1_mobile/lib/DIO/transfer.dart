@@ -28,7 +28,7 @@ class User {
 @JsonSerializable()
 class SigninResponse{
 
-  SigninResponse(this.username);
+  SigninResponse();
 
    String username = "";
 
