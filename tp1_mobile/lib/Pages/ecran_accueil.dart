@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EcranAccueil extends StatefulWidget {
+  const EcranAccueil({super.key});
+
   @override
   _ecranAccueilState createState() => _ecranAccueilState();
 }
@@ -17,9 +19,9 @@ class _ecranAccueilState extends State<EcranAccueil> {
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text('Accueil'),
+          title: const Text('Accueil'),
         ),
-        body: Text('Andy')
+        body: const Text('Andy')
     );
   }
 }
