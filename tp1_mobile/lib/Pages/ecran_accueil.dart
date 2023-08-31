@@ -20,7 +20,7 @@ class _ecranAccueilState extends State<EcranAccueil> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        drawer: LeTiroir(),
+        drawer: LeTiroir(nom_parametre: widget.le_parametre,),
         //TODO decommenter la ligne suivante
         appBar: AppBar(title: const Text('Accueil'), automaticallyImplyLeading: true,
         actions: [

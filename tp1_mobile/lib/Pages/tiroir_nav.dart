@@ -6,6 +6,11 @@ import 'package:tp1_mobile/Pages/ecran_creation.dart';
 
 
 class LeTiroir extends StatefulWidget {
+  final String nom_parametre;
+
+  const LeTiroir({Key? key, required this.nom_parametre}) : super(key: key);
+  // const EcranAccueil({Key? key, required this.le_parametre}) : super(key: key);
+
 
   @override
   State<StatefulWidget> createState() => LeTiroirState();
@@ -48,8 +53,14 @@ class LeTiroirState extends State<LeTiroir> {
   Widget build(BuildContext context) {
     var listView = ListView(
       padding: EdgeInsets.zero,
+
       children: <Widget>[
-        Container(height: 200,),
+        Align(
+          alignment: Alignment.center,
+          child: Text(widget.nom_parametre, style: TextStyle(fontSize: 20),),
+        ),
+
+        Container(height: 200, ),
         ListTile(
           dense: true,
           leading: Icon(Icons.arrow_back_outlined),

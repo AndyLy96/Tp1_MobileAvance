@@ -37,7 +37,7 @@ class _ecranCreationState extends State<EcranCreation> {
     return Scaffold(
         appBar: AppBar(title: const Text('Création'), automaticallyImplyLeading: true,),
 
-    drawer: LeTiroir(),
+    drawer: LeTiroir(nom_parametre: '',),
       body: Padding(
 
         padding: const EdgeInsets.all(16.0),
