@@ -39,7 +39,7 @@ class _EcranInscription extends State<EcranInscription> {
       print(response);
       Navigator.push(context,
         MaterialPageRoute(
-          builder: (context) => const EcranAccueil(),
+          builder: (context) => EcranAccueil(le_parametre: username.text,),
         ),
       );
     }on DioError catch (e){
@@ -58,12 +58,17 @@ class _EcranInscription extends State<EcranInscription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Inscription')),
+      // appBar: AppBar(title: const Text('Flutter'), automaticallyImplyLeading: false),
       body: Center(
         child: Form(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+              const Text(
+                'Inscription',
+                style: TextStyle(fontSize: 25),
+              ),
               TextFormField(
                 controller: username,
                 decoration: const InputDecoration(labelText: 'Nom d\'utilisateur'),

@@ -31,10 +31,11 @@ class _ConnexionPage extends State<ConnexionPage> {
     try{
       final response = await dio.post('http://10.0.2.2:8080/api/id/signin', data: signup.toJson());
       //SigninResponse signinResponse = SigninResponse(response.data);
-      Navigator.push(context,
+      Navigator.push(context ,
         MaterialPageRoute(
-          builder: (context) => const EcranAccueil(),
+          builder: (context) => EcranAccueil(le_parametre: username.text,),
         ),
+        // arguments: {"name" : username.text}
       );
 
       print(response);
@@ -51,25 +52,21 @@ class _ConnexionPage extends State<ConnexionPage> {
 
   }
 
-
-
-
-  void getHttp() async {
-    final response = await dio.get('https://dart.dev');
-    print(response);
-  }
-  
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Connexion')),
+      //appBar: AppBar(title: const Text('Flutter'), automaticallyImplyLeading: false),
       body: Center(
+
         child: Form(
           child: Column(
+
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Text(
+                'Connexion',
+                style: TextStyle(fontSize: 25),
+              ),
               TextFormField(
                 controller: username,
                 decoration: const InputDecoration(labelText: 'Nom d\'utilisateur'),

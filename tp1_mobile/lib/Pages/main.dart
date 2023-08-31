@@ -19,13 +19,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: const ConnexionPage(),
       routes: routes(),
+      debugShowCheckedModeBanner: false,
     );
   }
 
   Map<String, WidgetBuilder> routes() {
     return {
       '/home': (context) => const ConnexionPage(),
-      '/acceuil': (context) => const EcranAccueil(),
+      '/acceuil': (context) => EcranAccueil(le_parametre: '' ,),
       '/inscription': (context) => const EcranInscription()
     };
   }
