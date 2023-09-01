@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 /// This allows the `User` class to access private members in
@@ -54,15 +55,19 @@ class SignupRequest{
 @JsonSerializable()
 class AddTaskRequest{
 
-  AddTaskRequest(this.taskName, this.date);
 
-  String taskName;
-  DateTime date;
+  String name;
+  DateTime deadline;
+
+  AddTaskRequest({required this.name, required this.deadline});
+
 
   factory AddTaskRequest.fromJson(Map<String, dynamic> json) => _$AddTaskRequestFromJson(json);
   Map<String, dynamic> toJson() => _$AddTaskRequestToJson(this);
 
 }
+
+
 
 
 

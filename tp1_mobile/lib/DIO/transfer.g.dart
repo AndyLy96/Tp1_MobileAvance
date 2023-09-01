@@ -38,12 +38,12 @@ Map<String, dynamic> _$SignupRequestToJson(SignupRequest instance) =>
 
 AddTaskRequest _$AddTaskRequestFromJson(Map<String, dynamic> json) =>
     AddTaskRequest(
-      json['taskName'] as String,
-      DateTime.parse(json['date'] as String),
+      name: json['name'] as String,
+      deadline: DateTime.parse(json['deadline'] as String),
     );
 
 Map<String, dynamic> _$AddTaskRequestToJson(AddTaskRequest instance) =>
     <String, dynamic>{
-      'taskName': instance.taskName,
-      'date': instance.date.toIso8601String(),
+      'name': instance.name,
+      'deadline': instance.deadline.toIso8601String(),
     };

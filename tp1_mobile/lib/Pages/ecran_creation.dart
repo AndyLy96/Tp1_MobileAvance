@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tp1_mobile/DIO/transfer.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 import 'package:tp1_mobile/Pages/tiroir_nav.dart';
+import 'package:tp1_mobile/DIO/lib_http.dart';
+
 
 class EcranCreation extends StatefulWidget {
   const EcranCreation({super.key});
@@ -21,29 +24,25 @@ class _ecranCreationState extends State<EcranCreation> {
   DateTime _selectedDate = DateTime.now();
 
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
-  }
-
   final dio = Dio();
 
 
   void _addTask() async {
-    AddTaskRequest addTask = AddTaskRequest(taskName.text, _selectedDate);
+
+    // String formattedDate = DateFormat('yyyy-MM-dd').format(_selectedDate);
+    //
+    // DateTime offDate = formattedDate as DateTime;
+
+    // DateTime onlyDate = DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day);
+
+
+
+    AddTaskRequest addTask = AddTaskRequest(name : taskName.text,deadline: _selectedDate);
+    print(addTask.toJson());
 
 
     try{
-      final response = await dio.post('http://10.0.2.2:8080/api/add', data: addTask.toJson());
+      final response = await SingletonDio.getDio().post('http://10.0.2.2:8080/api/add', data: addTask.toJson());
       //SigninResponse signinResponse = SigninResponse(response.data);
       Navigator.push(context ,
         MaterialPageRoute(
@@ -63,6 +62,20 @@ class _ecranCreationState extends State<EcranCreation> {
 
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+      });
+    }
+    _selectedDate = picked!;
+  }
 
   final TextEditingController myController = TextEditingController();
 
@@ -112,7 +125,7 @@ class _ecranCreationState extends State<EcranCreation> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _addTask,
-              child: const Text('Page Acceuil'),
+              child: const Text('Crée tâche'),
             ),
           ],
         ),

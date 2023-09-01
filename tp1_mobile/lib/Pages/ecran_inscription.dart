@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tp1_mobile/DIO/lib_http.dart';
 import 'package:tp1_mobile/DIO/transfer.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 
@@ -34,7 +35,7 @@ class _EcranInscription extends State<EcranInscription> {
     SignupRequest signup = SignupRequest(username.text, psw);
 
     try{
-      final response = await dio.post('http://10.0.2.2:8080/api/id/signup', data: signup.toJson());
+      final response = await SingletonDio.getDio().post('http://10.0.2.2:8080/api/id/signup', data: signup.toJson());
       //SigninResponse signinResponse = SigninResponse(response.data);
       print(response);
       Navigator.push(context,

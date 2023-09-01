@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tp1_mobile/DIO/lib_http.dart';
 import 'package:tp1_mobile/DIO/transfer.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 import 'package:tp1_mobile/Pages/ecran_inscription.dart';
@@ -28,7 +29,7 @@ class _ConnexionPage extends State<ConnexionPage> {
     SignupRequest signup = SignupRequest(username.text, password.text);
 
     try{
-      final response = await dio.post('http://10.0.2.2:8080/api/id/signin', data: signup.toJson());
+      final response = await SingletonDio.getDio().post('http://10.0.2.2:8080/api/id/signin', data: signup.toJson());
       //SigninResponse signinResponse = SigninResponse(response.data);
       Navigator.push(context ,
         MaterialPageRoute(
