@@ -28,7 +28,7 @@ class _EcranInscription extends State<EcranInscription> {
 
     if(password.text == confirmPassword.text)
     {
-        this.psw = password.text;
+        psw = password.text;
     }
 
     SignupRequest signup = SignupRequest(username.text, psw);

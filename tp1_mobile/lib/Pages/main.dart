@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 import 'package:tp1_mobile/Pages/ecran_connexion.dart';
 import 'package:tp1_mobile/Pages/ecran_inscription.dart';
-import 'package:dio/dio.dart';
 
 
 
@@ -26,7 +25,8 @@ class MyApp extends StatelessWidget {
   Map<String, WidgetBuilder> routes() {
     return {
       '/home': (context) => const ConnexionPage(),
-      '/acceuil': (context) => EcranAccueil(le_parametre: '' ,),
+      '/signup': (context) => const EcranInscription(),
+      '/acceuil': (context) => const EcranAccueil(le_parametre: '' ,),
       '/inscription': (context) => const EcranInscription()
     };
   }

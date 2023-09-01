@@ -28,7 +28,7 @@ class LeTiroirState extends State<LeTiroir> {
       final response = await dio.post('http://10.0.2.2:8080/api/id/signout');
       Navigator.push(context ,
         MaterialPageRoute(
-          builder: (context) => ConnexionPage(),
+          builder: (context) => const ConnexionPage(),
         ),
         // arguments: {"name" : username.text}
       );
@@ -57,21 +57,21 @@ class LeTiroirState extends State<LeTiroir> {
       children: <Widget>[
         Align(
           alignment: Alignment.center,
-          child: Text(widget.nom_parametre, style: TextStyle(fontSize: 20),),
+          child: Text(widget.nom_parametre, style: const TextStyle(fontSize: 20),),
         ),
 
         Container(height: 200, ),
         ListTile(
           dense: true,
-          leading: Icon(Icons.arrow_back_outlined),
-          title: Text("Accueil"),
+          leading: const Icon(Icons.arrow_back_outlined),
+          title: const Text("Accueil"),
           onTap: () {
             // TODO ferme le tiroir de navigation
             Navigator.of(context).pop();
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => EcranAccueil(le_parametre: '',),
+                builder: (context) => const EcranAccueil(le_parametre: '',),
               ),
             );
             // Then close the drawer
@@ -79,14 +79,14 @@ class LeTiroirState extends State<LeTiroir> {
         ),
         ListTile(
           dense: true,
-          leading: Icon(Icons.add_box),
-          title: Text("Ajout de tâche"),
+          leading: const Icon(Icons.add_box),
+          title: const Text("Ajout de tâche"),
           onTap: () {
             Navigator.of(context).pop();
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => EcranCreation(),
+                builder: (context) => const EcranCreation(),
               ),
             );
             // Then close the drawer
@@ -94,8 +94,8 @@ class LeTiroirState extends State<LeTiroir> {
         ),
         ListTile(
           dense: true,
-          leading: Icon(Icons.logout),
-          title: Text("Déconnexion"),
+          leading: const Icon(Icons.logout),
+          title: const Text("Déconnexion"),
           onTap: _signOut
         ),
         // ListTile(
@@ -118,7 +118,7 @@ class LeTiroirState extends State<LeTiroir> {
     );
 
     return Drawer(
-      child: new Container(
+      child: Container(
         color: const Color(0xFFFFFFFF),
         child: listView,
       ),

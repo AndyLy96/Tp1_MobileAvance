@@ -51,5 +51,19 @@ class SignupRequest{
 
 }
 
+@JsonSerializable()
+class AddTaskRequest{
+
+  AddTaskRequest(this.taskName, this.date);
+
+  String taskName;
+  DateTime date;
+
+  factory AddTaskRequest.fromJson(Map<String, dynamic> json) => _$AddTaskRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$AddTaskRequestToJson(this);
+
+}
+
+
 
 
