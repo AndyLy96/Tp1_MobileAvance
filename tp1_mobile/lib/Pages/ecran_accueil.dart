@@ -11,12 +11,13 @@ import 'package:tp1_mobile/Pages/tiroir_nav.dart';
 import 'package:intl/intl.dart';
 
 class Task {
+  final int id;
   final String taskName;
   final int progress;
   DateTime date;
   final double dateProgress;
 
-  Task({required this.taskName, required this.progress, required this.date , required this.dateProgress});
+  Task({required this.id ,required this.taskName, required this.progress, required this.date , required this.dateProgress});
 
 
 }
@@ -56,6 +57,7 @@ class _ecranAccueilState extends State<EcranAccueil> {
      {
 
        Task task = Task(
+           id: vraierep[i]["id"] ,
            taskName: vraierep[i]["name"],
            progress: vraierep[i]["percentageDone"],
            date: DateTime.parse(vraierep[i]["deadline"]) ,
@@ -86,7 +88,9 @@ class _ecranAccueilState extends State<EcranAccueil> {
 
        // tasks = getJson();
 
+        setState(() {
 
+        });
 
 
      }on DioError catch (e){
@@ -102,7 +106,11 @@ class _ecranAccueilState extends State<EcranAccueil> {
 
    }
 
-
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
   final TextEditingController myController = TextEditingController();
 
   @override
