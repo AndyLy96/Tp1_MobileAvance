@@ -83,6 +83,7 @@ class _ecranCreationState extends State<EcranCreation> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Création'), automaticallyImplyLeading: true,),
+      resizeToAvoidBottomInset : false,
 
     drawer: const LeTiroir(nom_parametre: '',),
       body: Padding(

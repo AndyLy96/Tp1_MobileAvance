@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tp1_mobile/DIO/SingletonF.dart';
 import 'package:tp1_mobile/DIO/lib_http.dart';
 import 'package:tp1_mobile/DIO/transfer.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
@@ -34,9 +35,11 @@ class _ConnexionPage extends State<ConnexionPage> {
       Navigator.push(context ,
         MaterialPageRoute(
           builder: (context) => EcranAccueil(le_parametre: username.text,),
+
         ),
         // arguments: {"name" : username.text}
       );
+
 
       print(response);
 

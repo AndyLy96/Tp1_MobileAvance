@@ -59,7 +59,6 @@ class LeTiroirState extends State<LeTiroir> {
           alignment: Alignment.center,
           child: Text(widget.nom_parametre, style: const TextStyle(fontSize: 20),),
         ),
-
         Container(height: 200, ),
         ListTile(
           dense: true,

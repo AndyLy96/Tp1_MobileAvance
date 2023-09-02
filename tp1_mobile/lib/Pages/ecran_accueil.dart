@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_mobile/DIO/lib_http.dart';
+import 'package:tp1_mobile/Pages/ecran_consultation.dart';
 import 'package:tp1_mobile/Pages/ecran_creation.dart';
 import 'package:tp1_mobile/Pages/tiroir_nav.dart';
 
@@ -79,31 +80,16 @@ class _ecranAccueilState extends State<EcranAccueil> {
 
    void  createTasks() async
    {
-
      try{
        final response = await SingletonDio.getDio().get('http://10.0.2.2:8080/api/home');
        print("sisijsis"  + response.toString());
-
-       // tasks = (jsonDecode(response.toString()) as List).map((e) => Task)
-
-       // tasks = getJson();
-
-        setState(() {
-
-        });
-
-
+        setState(() {});
      }on DioError catch (e){
        final snackBar = SnackBar(
          content: Text(e.response?.data),
        );
-
        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
      }
-
-
-
    }
 
   @override
@@ -116,7 +102,7 @@ class _ecranAccueilState extends State<EcranAccueil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: LeTiroir(nom_parametre: widget.le_parametre,),
+      drawer: LeTiroir(nom_parametre: widget.le_parametre,),
         appBar: AppBar(title: const Text('Accueil'), automaticallyImplyLeading: true,
         actions: [ const Align(
             alignment: Alignment.center,
@@ -141,7 +127,7 @@ class _ecranAccueilState extends State<EcranAccueil> {
                onTap:() {
                  Navigator.push(context,
                    MaterialPageRoute(
-                     builder: (context) => const EcranCreation(),
+                     builder: (context) => DetailPage(leID: tasks[index].id),
                    ),
                  );
                } ,
@@ -153,8 +139,8 @@ class _ecranAccueilState extends State<EcranAccueil> {
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: <Widget>[
-                             Text(tasks[index].taskName),
-                             Text(DateFormat("yyyy:MM:dd").format(tasks[index].date)),
+                             Text("Nom de la tâche: " + tasks[index].taskName),
+                             Text("Date limite: " +DateFormat("yyyy:MM:dd").format(tasks[index].date)),
                            ],
                          ),
                        ),
@@ -162,11 +148,11 @@ class _ecranAccueilState extends State<EcranAccueil> {
                      Column(
                        crossAxisAlignment: CrossAxisAlignment.end,
                        children: <Widget>[
-                         Text("Prgrès de la tâche: ${tasks[index].progress}%"),
-                         Text("Prgrès de la date limite: ${tasks[index].dateProgress}%"),
+                         Text("Progrès de la tâche: ${tasks[index].progress}%"),
+                         Text("Progrès de la limite: ${tasks[index].dateProgress}%"),
                        ],),
                    ],
-                 ),
+               ),
              );
              },
           ),
