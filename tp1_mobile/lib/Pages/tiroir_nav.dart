@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:tp1_mobile/Pages/singletonf.dart';
 import 'package:tp1_mobile/Pages/ecran_accueil.dart';
 import 'package:tp1_mobile/Pages/ecran_connexion.dart';
 import 'package:tp1_mobile/Pages/ecran_creation.dart';
@@ -57,7 +58,8 @@ class LeTiroirState extends State<LeTiroir> {
       children: <Widget>[
         Align(
           alignment: Alignment.center,
-          child: Text(widget.nom_parametre, style: const TextStyle(fontSize: 20),),
+          child: Text(SingletonsF.name, style: const TextStyle(fontSize: 20),),
+
         ),
         Container(height: 200, ),
         ListTile(
